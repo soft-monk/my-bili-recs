@@ -20,7 +20,7 @@
 | M1 | CLI 打分 + TF-IDF 双轴推荐闭环 | ✅ 完成 |
 | M2 | B站候选池：分区排行榜自动收集（订阅源待登录 cookie） | ✅ 完成 |
 | M3 | 油猴脚本在 B站页面一键双轴打分 | 计划中 |
-| M4 | 每日精选网页（serve.py）✅ / 页内重排 / 推送 / 探索位 / 评估统计 | 进行中 |
+| M4 | 每日清单网页 + 三档反馈 + 为什么推荐 + 探索位 ✅ / 页内重排 / 推送 / 评估统计 | 进行中 |
 
 ## 安装
 
@@ -43,19 +43,22 @@ python collector.py --top 30
 # 2. 打开每日精选网页（自动弹出浏览器，默认 http://127.0.0.1:8765/）
 python serve.py
 
-# 3. 点卡片标题去 B站看视频，看完回网页点「满意 / 踩雷」
-#    → 分数自动回写 data/scores.csv → 刷新页面推荐即更新
+# 3. 点卡片标题去 B站看视频，看完回网页点「喜欢 / 无感 / 踩雷」（可撤销）
+#    → 分数自动回写 data/scores.csv；清单当天固定不变，次日自动重算
+#    → 想立刻换一批：点页面上的「重算今日清单」
 ```
 
 ## 打分（训练数据的来源）
 
 ```powershell
-# CLI 打分：兴趣分 + 价值分 各 1~5
-python score.py --bvid BV1xx4y1z7Ab --title "视频标题" --tags "科技,科普" --interest 4 --value 5
+# CLI 打分：兴趣分 + 价值分 各 1~5（--author 建议填，UP 主是最强的推荐信号）
+python score.py --bvid BV1xx4y1z7Ab --title "视频标题" --tags "科技、科普" --author "某UP主" --interest 4 --value 5
 python score.py --list
+python score.py --delete BV1xx4y1z7Ab     # 撤销某条打分
 ```
 
-- 网页反馈按钮的映射：**满意 → 兴趣4/价值4；踩雷 → 兴趣1/价值1**
+- 网页三档反馈的映射：**喜欢 → 兴趣5/价值4；无感 → 3/3（不改模型，但不再推荐）；踩雷 → 兴趣1/价值1**
+- 同一 bvid 只保留一条记录（重复打分自动覆盖，不会重复计入训练）
 - 打分原则：**只为"明显超出或低于预期"的视频打分**，没打分的视频不进训练样本——稀疏但干净，这正是显式反馈的优势
 - 冷启动建议：翻历史记录/收藏夹回顾式打 30~50 条，再评价推荐质量
 
@@ -66,6 +69,8 @@ python score.py --list
 - 每次运行 `recommend.py`、或刷新 `serve.py` 网页，都会读取 `data/scores.csv` 里的**全部当前打分**，在几秒内重新计算双轴原型
 - 所以"更新模型" = 追加打分 → 重新跑命令 / 刷新网页，立即生效
 - 想验证模型质量：`python recommend.py --self-check 8`——留出 8 条打分用其余训练，对比预测兴趣与真实兴趣，输出命中率与平均误差
+- **今日清单**：当天首次生成后固定不变（`data/daily/YYYY-MM-DD.json`），次日自动重算；命令行 `python recommend.py --daily` 查看，`--refresh` 强制重算
+- **数据体检**：`python doctor.py`——自动修 GBK 编码、补 author 列、去重；加 `--enrich` 可补抓缺失的 UP 主/标题
 
 ## 网页服务参数
 
@@ -94,13 +99,16 @@ python serve.py --port 9000      # 指定端口
 
 ```
 my-bili-recs/
-├── score.py                 # CLI 打分入口
-├── collector.py             # M2：B站分区排行榜候选收集（无需登录）
-├── recommend.py             # 双轴推荐引擎（TF-IDF + 原型向量）
-├── serve.py                 # M4：每日精选网页 + 满意/踩雷反馈回写
+├── score.py                 # CLI 打分入口（--author / --delete）
+├── collector.py             # B站分区排行榜候选收集（无需登录，含 UP 主，带风控退避重试）
+├── recommend.py             # 双轴推荐引擎（停用词 / UP 主特征 / 探索位 / 每日清单 / 为什么推荐）
+├── serve.py                 # 每日清单网页 + 三档反馈 + JSON 接口
+├── storage.py               # 数据 schema 唯一定义处（scores / candidates 读写）
+├── doctor.py                # 数据体检：修编码 / 补列 / 去重 / 补抓 UP 主
+├── bili_meta.py             # B站公开接口抓元数据（标题 / UP主 / 标签）
 ├── requirements.txt
 ├── examples/                # 示例数据（供参考格式）
-└── data/                    # 你的分数与候选（随 git 同步）
+└── data/                    # 分数、候选、每日清单（随 git 同步）
 ```
 
 ## 常见问题

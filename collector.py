@@ -66,13 +66,21 @@ def main():
     cands = {}
     for rid, name in RIDS.items():
         url = f"https://api.bilibili.com/x/web-interface/ranking/v2?rid={rid}&type=all"
-        try:
-            data = http_get_json(url)
-        except Exception as e:
-            print(f"[{name}] 拉取失败：{e}")
-            continue
-        if data.get("code") != 0:
-            print(f"[{name}] 接口返回异常 code={data.get('code')}：{data.get('message')}")
+        data = None
+        for attempt in (1, 2):   # B站风控 -352 常见于请求过密，失败后退避重试一次
+            try:
+                data = http_get_json(url)
+            except Exception as e:
+                print(f"[{name}] 第 {attempt} 次拉取失败：{e}")
+                data = None
+            if data and data.get("code") == 0:
+                break
+            if data is not None:
+                print(f"[{name}] 第 {attempt} 次返回异常 code={data.get('code')}"
+                      f"（风控/限流）{data.get('message', '')}")
+            time.sleep(3)
+        if not data or data.get("code") != 0:
+            print(f"[{name}] 放弃该分区（稍后再试）")
             continue
         items = data.get("data", {}).get("list", [])
         added = 0
@@ -82,10 +90,11 @@ def main():
                 continue
             title = it.get("title", "").strip().replace("\n", " ")
             tname = it.get("tname", name)
-            cands[bvid] = (title, tname)
+            author = ((it.get("owner") or {}).get("name") or "").strip()
+            cands[bvid] = (title, tname, author)
             added += 1
         print(f"[{name}] top{args.top} → 新增候选 {added}")
-        time.sleep(0.5)
+        time.sleep(2)
 
     if not cands:
         print("\n没有拉到任何候选。")
@@ -93,9 +102,9 @@ def main():
 
     with open(CANDIDATES_FILE, "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["bvid", "title", "tags"])
-        for bvid, (title, tname) in cands.items():
-            w.writerow([bvid, title, tname])
+        w.writerow(["bvid", "title", "tags", "author"])
+        for bvid, (title, tname, author) in cands.items():
+            w.writerow([bvid, title, tname, author])
 
     print(f"\n候选池已写入 {CANDIDATES_FILE}，共 {len(cands)} 个")
     print("下一步：python recommend.py --top 15")
