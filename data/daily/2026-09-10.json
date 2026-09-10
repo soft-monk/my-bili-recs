@@ -1,31 +1,19 @@
 {
   "date": "2026-09-10",
-  "generated_at": "2026-09-10T16:30:03",
-  "train_count": 28,
-  "cand_count": 240,
-  "filtered": 60,
+  "generated_at": "2026-09-10T16:34:30",
+  "train_count": 48,
+  "cand_count": 220,
+  "filtered": 148,
   "items": [
     {
-      "bvid": "BV1cUoDYaEdb",
-      "title": "语音、画图、PPT、联动全网，我这个完美版的DeepSeek，你们都没有用过！",
-      "tags": "软件应用",
-      "author": "玄离199",
-      "pred_interest": 4.29,
-      "pred_value": 4.49,
+      "bvid": "BV1cyZnY2Ehg",
+      "title": "乱象丛生？日本老龄消防队能有多奇葩？",
+      "tags": "人文历史",
+      "author": "世界见闻录",
+      "pred_interest": 3.21,
+      "pred_value": 3.13,
       "match": 100,
       "explore": false,
-      "why": [],
-      "feedback": null
-    },
-    {
-      "bvid": "BV1ha4y1L7CK",
-      "title": "【我和我的家乡 电影幕后纪实节目】王源变身土味导游，差点没认出来",
-      "tags": "人文·历史",
-      "author": "哔哩哔哩纪录片",
-      "pred_interest": 4.28,
-      "pred_value": 4.07,
-      "match": 99,
-      "explore": false,
       "why": [
         "历史",
         "人文"
@@ -33,97 +21,112 @@
       "feedback": null
     },
     {
-      "bvid": "BV1dK4y1f7NK",
-      "title": "【我和我的家乡 电影幕后纪实节目】彩蛋 黄渤手工耿试用分分合合床",
-      "tags": "人文·历史",
-      "author": "哔哩哔哩纪录片",
-      "pred_interest": 4.27,
-      "pred_value": 4.05,
-      "match": 97,
-      "explore": false,
-      "why": [
-        "历史",
-        "人文"
-      ],
-      "feedback": null
-    },
-    {
-      "bvid": "BV1Ty4y1C7tf",
-      "title": "【纪录片】故宫新事 第一集 文物搬家",
-      "tags": "人文·历史",
-      "author": "故宫博物院",
-      "pred_interest": 4.27,
-      "pred_value": 4.05,
-      "match": 97,
-      "explore": false,
-      "why": [
-        "历史",
-        "人文"
-      ],
-      "feedback": null
-    },
-    {
-      "bvid": "BV1EPZEYKEvW",
-      "title": "垃圾场上的妙妙屋【日本世博会】",
-      "tags": "人文历史",
-      "author": "队友去质器",
-      "pred_interest": 4.13,
-      "pred_value": 3.91,
-      "match": 85,
-      "explore": false,
-      "why": [
-        "历史",
-        "人文"
-      ],
-      "feedback": null
-    },
-    {
-      "bvid": "BV12sZqYeEvD",
-      "title": "铁甲小宝当年没发现的细节，暴走轮子嫌疑犯",
-      "tags": "人文历史",
-      "author": "燚病毒",
-      "pred_interest": 4.12,
-      "pred_value": 3.91,
-      "match": 84,
-      "explore": false,
-      "why": [
-        "历史",
-        "人文"
-      ],
-      "feedback": null
-    },
-    {
-      "bvid": "BV1gEodYtEBL",
-      "title": "小米良心 or 偷偷减配？报废级拆解小米中央空调",
-      "tags": "数码",
-      "author": "先看评测",
-      "pred_interest": 4.1,
-      "pred_value": 3.96,
-      "match": 82,
+      "bvid": "BV1H5Z4YhEsn",
+      "title": "海龟汤（2）",
+      "tags": "桌游棋牌",
+      "author": "高斯Goh",
+      "pred_interest": 3.17,
+      "pred_value": 3.26,
+      "match": 93,
       "explore": false,
       "why": [],
       "feedback": null
     },
     {
-      "bvid": "BV1ezZJYcEaT",
-      "title": "四大ikun集结，能否挽救坤蛋危机？",
-      "tags": "搞笑",
-      "author": "汤姆的混乱空间",
-      "pred_interest": 4.06,
-      "pred_value": 3.95,
+      "bvid": "BV1twZ4YzEmv",
+      "title": "深度|| 香火之战，车迟国的教皇实验",
+      "tags": "人文历史",
+      "author": "渤海小吏",
+      "pred_interest": 3.16,
+      "pred_value": 3.01,
+      "match": 91,
+      "explore": false,
+      "why": [
+        "历史",
+        "人文"
+      ],
+      "feedback": null
+    },
+    {
+      "bvid": "BV15dovYrET1",
+      "title": "洛洛：霹雳火寂寞了会找网约车吗？",
+      "tags": "鬼畜剧场",
+      "author": "明灯-专注脑洞一百年",
+      "pred_interest": 3.16,
+      "pred_value": 3.0,
+      "match": 91,
+      "explore": false,
+      "why": [
+        "鬼畜"
+      ],
+      "feedback": null
+    },
+    {
+      "bvid": "BV1ArZnYUE9a",
+      "title": "《晓艳天气预报》",
+      "tags": "鬼畜剧场",
+      "author": "张飞的小迷弟",
+      "pred_interest": 3.14,
+      "pred_value": 3.17,
+      "match": 87,
+      "explore": false,
+      "why": [
+        "鬼畜"
+      ],
+      "feedback": null
+    },
+    {
+      "bvid": "BV1C3fcYhEb6",
+      "title": "【邓紫棋的VLOG】I AM GLORIA世界巡玩 之 洛杉矶 & 拉斯维加斯篇",
+      "tags": "音乐综合",
+      "author": "GEM鄧紫棋",
+      "pred_interest": 3.11,
+      "pred_value": 3.02,
+      "match": 80,
+      "explore": false,
+      "why": [
+        "音乐"
+      ],
+      "feedback": null
+    },
+    {
+      "bvid": "BV1nwZEYqE2B",
+      "title": "90后这辈子第一次接受到的鼓励式教育",
+      "tags": "鬼畜调教",
+      "author": "红豆稀饭中",
+      "pred_interest": 3.11,
+      "pred_value": 3.05,
+      "match": 80,
+      "explore": false,
+      "why": [
+        "鬼畜"
+      ],
+      "feedback": null
+    },
+    {
+      "bvid": "BV1GWZnYcEYX",
+      "title": "他们，是唐朝最大的遗憾！",
+      "tags": "人文历史",
+      "author": "海棠家的大肥鱼",
+      "pred_interest": 3.1,
+      "pred_value": 3.02,
       "match": 79,
       "explore": false,
-      "why": [],
+      "why": [
+        "历史",
+        "最大",
+        "人文"
+      ],
       "feedback": null
     },
     {
-      "bvid": "BV1iFfTYAEGT",
-      "title": "工作时请不要忘记猫咪,否则会出大问题！",
-      "tags": "单机游戏",
-      "author": "与山0v0",
-      "pred_interest": 3.42,
-      "pred_value": 3.63,
-      "match": 21,
+      "bvid": "BV1WvZzYvEHi",
+      "title": "“百年一遇的模仿奇才”",
+      "tags": "音乐现场",
+      "author": "符尓摩斯R7",
+      "pred_interest": 2.83,
+      "pred_value": 3.01,
+      "match": 20,
       "explore": true,
       "why": [
         "探索位：故意跳出你的口味圈"
@@ -131,13 +134,13 @@
       "feedback": null
     },
     {
-      "bvid": "BV1t8ZCYsECf",
-      "title": "第二十九章：恶魔地球！",
-      "tags": "原创音乐",
-      "author": "蓝色星尘2",
-      "pred_interest": 3.53,
-      "pred_value": 3.77,
-      "match": 30,
+      "bvid": "BV1S1oeYbEe1",
+      "title": "我们俩吉他弹唱～",
+      "tags": "演奏",
+      "author": "屁屁猪ne",
+      "pred_interest": 2.92,
+      "pred_value": 3.14,
+      "match": 39,
       "explore": true,
       "why": [
         "探索位：故意跳出你的口味圈"
